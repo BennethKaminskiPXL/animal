@@ -36,11 +36,7 @@ namespace Game
         public int X { get; set; }
         public int Y { get; set; }
 
-        public bool ContainsFood
-        {
-            get { return _containsFood; }
-            set { _containsFood = CheckForFood(); }
-        }
+        public bool ContainsFood { get; set; }
 
         public bool YouWereHere { get; set; }
 
@@ -52,7 +48,7 @@ namespace Game
             set {_sprite = value;
                 _sprite.AdjustSize(_heigth, _width);
                 
-               //ContainsFood = CheckForFood();
+               ContainsFood = CheckForFood();
                 _canvas.Children.Add(_sprite.Image);
                 // if (!ContainsFood && !YouWereHere)
                 // {
@@ -64,15 +60,12 @@ namespace Game
 
         private bool CheckForFood()
         {
-            if (_sprite.ImageName != KindOfSpecies.EarthWorm.ToString().ToLower() &&
-                 _sprite.ImageName != KindOfSpecies.Acorn.ToString().ToLower() &&
-                 _sprite.ImageName != KindOfSpecies.Carrot.ToString().ToLower()
-                 )
+            if (_sprite is Food)
             {
-                return false;
+                return true;
 
             }
-            return true;
+            return false;
         }
 
         //      Don't forget to put the image on the Canvas, to adjust the size of the Sprite, to check if it is food

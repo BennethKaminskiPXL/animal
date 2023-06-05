@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace Game
 {
@@ -48,10 +49,12 @@ namespace Game
             if  (newY >= upperborder && newY <= lowerborder && newX >= leftBorder && newX <= rightBorder)
                 {
                     
-                    if (_world[newY,newX].ContainsFood)
+                    if (_world[newY,newX].ContainsFood == true)
                     {
+                    MessageBox.Show("food");
+                    _world[sprite.Y, sprite.X].RemoveFromAnimalWorldPiece();
                     _world[newY, newX].RemoveFromAnimalWorldPiece();
-                    _world[newY, newX].Sprite = sprite;
+                    AddSpriteToWorld(sprite, newX, newY);
                 }
                     else if (_world[newY, newX].YouWereHere)
                     {
