@@ -44,12 +44,12 @@ namespace Game
            
                 if(sprite.X + dX >= upperborder && sprite.X +dX <= lowerborder && sprite.Y + dY >= leftBorder && sprite.Y +dY <= rightBorder)
                 {
-                    if (_world[sprite.X + dX, sprite.Y + dY].ContainsFood)
+                    if (_world[sprite.Y + dY, sprite.X + dX].ContainsFood)
                     {
-                        _world[sprite.X + dX, sprite.Y + dY].RemoveFromAnimalWorldPiece();
-                        _world[sprite.X + dX, sprite.Y + dY].Sprite = sprite;
+                        _world[sprite.Y + dY, sprite.X + dX].RemoveFromAnimalWorldPiece();
+                        _world[sprite.Y + dY, sprite.X + dX].Sprite = sprite;
                     }
-                    else if (_world[sprite.X + dX, sprite.Y + dY].YouWereHere)
+                    else if (_world[sprite.Y + dY, sprite.X + dX].YouWereHere)
                     {
                         throw new MoveException("You have allready been here");
                     }

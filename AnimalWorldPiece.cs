@@ -12,6 +12,7 @@ namespace Game
         private double _heigth;
         private double _width;
         private Sprite _sprite;
+        private bool _containsFood;
 
         public AnimalWorldPiece(Canvas canvas, double height, double width, int y, int x)
         {
@@ -34,8 +35,13 @@ namespace Game
         // ToDo make the properties X, Y, ContainsFood, YouWereHere
         public int X { get; set; }
         public int Y { get; set; }
-        public bool ContainsFood { get; set
-                ; }
+
+        public bool ContainsFood
+        {
+            get { return _containsFood; }
+            set { _containsFood = CheckForFood(); }
+        }
+
         public bool YouWereHere { get; set; }
 
 
@@ -46,7 +52,7 @@ namespace Game
             set {_sprite = value;
                 _sprite.AdjustSize(_heigth, _width);
                 
-               ContainsFood = CheckForFood(_sprite);
+               //ContainsFood = CheckForFood();
                 _canvas.Children.Add(_sprite.Image);
                 // if (!ContainsFood && !YouWereHere)
                 // {
@@ -56,11 +62,11 @@ namespace Game
             }
         }
 
-        private bool CheckForFood(Sprite sprite)
+        private bool CheckForFood()
         {
-            if (sprite.ImageName != KindOfSpecies.EarthWorm.ToString().ToLower() &&
-                 sprite.ImageName != KindOfSpecies.Acorn.ToString().ToLower() &&
-                 sprite.ImageName != KindOfSpecies.Carrot.ToString().ToLower()
+            if (_sprite.ImageName != KindOfSpecies.EarthWorm.ToString().ToLower() &&
+                 _sprite.ImageName != KindOfSpecies.Acorn.ToString().ToLower() &&
+                 _sprite.ImageName != KindOfSpecies.Carrot.ToString().ToLower()
                  )
             {
                 return false;
@@ -77,15 +83,15 @@ namespace Game
         public void RemoveFromAnimalWorldPiece()
         {
             // ToDo remove the Sprite(= the image of the sprite) from the Canvas and give the Sprite the value null
-            
-            _canvas.Children.Remove(_sprite.Image);
-            _sprite = null;
-            // ToDo if the Sprite is an Animal you have to give the _canvas the color red (Don't forget the property YouWereHere)
             if (_sprite is Animal)
             {
                 YouWereHere = true;
                 _canvas.Background = new SolidColorBrush(Colors.Red);
             }
+            _canvas.Children.Remove(_sprite.Image);
+            _sprite = null;
+            // ToDo if the Sprite is an Animal you have to give the _canvas the color red (Don't forget the property YouWereHere)
+            
             
         }
 
