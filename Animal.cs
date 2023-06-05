@@ -5,16 +5,13 @@
         //ToDo Make an abstract read only property Species
         public abstract KindOfSpecies Species { get; }
 
-        public override string ImageName { get; }
-
         public override void AdjustSize(double width, double height)
         {
             //todo volledige hoogte en breedte;
             Image.Width = width;
             Image.Height = height;
         }
-        //bool iverrude areYouFood
-        //food abstract whatdoyouEat
+        
     }
 }
 

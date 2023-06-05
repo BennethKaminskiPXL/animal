@@ -12,7 +12,7 @@ namespace Game
         private double _heigth;
         private double _width;
         private Sprite _sprite;
-        private bool _containsFood;
+        
 
         public AnimalWorldPiece(Canvas canvas, double height, double width, int y, int x)
         {

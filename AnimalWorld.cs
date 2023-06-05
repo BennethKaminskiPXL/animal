@@ -51,9 +51,10 @@ namespace Game
                     
                     if (_world[newY,newX].ContainsFood == true)
                     {
-                    MessageBox.Show("food");
+                    
                     _world[sprite.Y, sprite.X].RemoveFromAnimalWorldPiece();
                     _world[newY, newX].RemoveFromAnimalWorldPiece();
+                    FoodCount--;
                     AddSpriteToWorld(sprite, newX, newY);
                 }
                     else if (_world[newY, newX].YouWereHere)

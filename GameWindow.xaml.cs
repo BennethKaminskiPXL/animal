@@ -46,7 +46,7 @@ namespace Game
 
         private void _timer_Tick(object sender, EventArgs e)
         {
-            _time.Subtract(TimeSpan.FromSeconds(1));
+            _time = _time.Subtract(TimeSpan.FromSeconds(1));
             timeTextBox.Text = $"{_time.Seconds} seconden";
             if (_time.Seconds <= 0)
             {

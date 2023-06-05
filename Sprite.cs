@@ -12,9 +12,14 @@ namespace Game
 
         public Sprite()
         {
-            Image = new Image();
-            string imagePath = $"images/{ImageName}";
-            Image.Source = new BitmapImage(new Uri(imagePath,UriKind.RelativeOrAbsolute));
+            BitmapImage bitmapImage = new BitmapImage();
+            bitmapImage.BeginInit();
+            bitmapImage.UriSource = new Uri($"images/{ImageName}", UriKind.RelativeOrAbsolute);
+            bitmapImage.EndInit();
+
+            Image image = new Image();
+            image.Source = bitmapImage;
+            Image = image;
         }
         public Image Image { get; }
         public int X { get; set; }

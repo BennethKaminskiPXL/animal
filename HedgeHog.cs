@@ -8,8 +8,13 @@ namespace Game
 {
     public class HedgeHog : Animal
     {
-        public override KindOfSpecies Species => KindOfSpecies.EarthWorm;
+       
 
-        public override string ImageName => "hedgehog.png";
+        public override string ImageName
+        {
+            get => "hedgehog.png";
+        }
+
+        public override KindOfSpecies Species => KindOfSpecies.EarthWorm;
     }
 }

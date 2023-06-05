@@ -16,7 +16,23 @@ namespace Game
         }
 
         //      Make sure that property Source of the image is correct.
-        public override string ImageName => Species.ToString().ToLower() + ".png";
+        public override string ImageName
+        {
+            get
+            {
+                switch (Species)
+                {
+                    case KindOfSpecies.Carrot:
+                        return $"carrot.png";
+                    case KindOfSpecies.EarthWorm:
+                        return $"earthworm.png";
+                    case KindOfSpecies.Acorn:
+                        return $"acorn.png";
+                    default:
+                        return null;
+                }
+            }
+        }
 
         public override void AdjustSize(double width, double height)
         {
