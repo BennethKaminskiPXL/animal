@@ -57,7 +57,7 @@ namespace Game
                     {
                         
                         _world[sprite.X, sprite.Y].RemoveFromAnimalWorldPiece();
-                        _world[sprite.X + dX, sprite.Y + dY].Sprite = sprite;
+                        AddSpriteToWorld(sprite,sprite.Y+dY,sprite.X+dX);
                     }
                     
                 }
