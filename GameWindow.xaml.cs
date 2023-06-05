@@ -62,11 +62,11 @@ namespace Game
             {
                 if (button == upButton)
                 {
-                    _animalWorld.Move(_currentAnimal, 0, 1);
+                    _animalWorld.Move(_currentAnimal, 0, -1);
                 }
                 else if (button == downButton)
                 {
-                    _animalWorld.Move(_currentAnimal, 0, -1);
+                    _animalWorld.Move(_currentAnimal, 0, 1);
                 }
                 else if (button == leftButton)
                 {

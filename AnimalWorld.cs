@@ -30,35 +30,39 @@ namespace Game
         {// ToDo set the property Sprite of the right element of _world
             _world[rowNumber,columnNumber].Sprite = sprite;
             // ToDo set the X and Y property of the Sprite
-            _world[rowNumber, columnNumber].Sprite.X = rowNumber;
-            _world[rowNumber, columnNumber].Sprite.Y = columnNumber;
+            _world[rowNumber, columnNumber].Sprite.Y = rowNumber;
+            _world[rowNumber, columnNumber].Sprite.X = columnNumber;
 
         }
 
         public void Move(Sprite sprite, int dX, int dY) // dX stepSize in x direction, dY stepSize in y direction
         {
             int leftBorder = 0;
-            int rightBorder = _world.GetLength(1);
+            int rightBorder = _world.GetLength(1)-1;
             int upperborder = 0;
-            int lowerborder = _world.GetLength(0);
-           
-                if(sprite.X + dX >= upperborder && sprite.X +dX <= lowerborder && sprite.Y + dY >= leftBorder && sprite.Y +dY <= rightBorder)
+            int lowerborder = _world.GetLength(0) -1;
+            int newX = sprite.X + dX;
+            int newY = sprite.Y + dY;
+
+
+            if  (newY >= upperborder && newY <= lowerborder && newX >= leftBorder && newX <= rightBorder)
                 {
-                    if (_world[sprite.Y + dY, sprite.X + dX].ContainsFood)
+                    
+                    if (_world[newY,newX].ContainsFood)
                     {
-                        _world[sprite.Y + dY, sprite.X + dX].RemoveFromAnimalWorldPiece();
-                        _world[sprite.Y + dY, sprite.X + dX].Sprite = sprite;
-                    }
-                    else if (_world[sprite.Y + dY, sprite.X + dX].YouWereHere)
+                    _world[newY, newX].RemoveFromAnimalWorldPiece();
+                    _world[newY, newX].Sprite = sprite;
+                }
+                    else if (_world[newY, newX].YouWereHere)
                     {
                         throw new MoveException("You have allready been here");
                     }
                     else
                     {
                         
-                        _world[sprite.X, sprite.Y].RemoveFromAnimalWorldPiece();
-                        AddSpriteToWorld(sprite,sprite.Y+dY,sprite.X+dX);
-                    }
+                        _world[sprite.Y, sprite.X].RemoveFromAnimalWorldPiece();
+                        AddSpriteToWorld(sprite, newX, newY);
+                }
                     
                 }
                 else
